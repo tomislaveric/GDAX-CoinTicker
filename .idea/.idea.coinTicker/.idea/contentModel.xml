@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="$USER_HOME$/Library/Caches/Rider2017.2/resharper-host/local/Transient/ReSharperHost/v10/SolutionCaches/_coinTicker.1037414838.00" t="ExcludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="AppDelegate.cs" t="Include" />
+      <e p="Assets.xcassets" t="Include">
+        <e p="AppIcon.appiconset" t="Include">
+          <e p="AppIcon-128.png" t="Include" />
+          <e p="AppIcon-128@2x.png" t="Include" />
+          <e p="AppIcon-16.png" t="Include" />
+          <e p="AppIcon-16@2x.png" t="Include" />
+          <e p="AppIcon-256.png" t="Include" />
+          <e p="AppIcon-256@2x.png" t="Include" />
+          <e p="AppIcon-32.png" t="Include" />
+          <e p="AppIcon-32@2x.png" t="Include" />
+          <e p="AppIcon-512.png" t="Include" />
+          <e p="AppIcon-512@2x.png" t="Include" />
+          <e p="Contents.json" t="Include" />
+        </e>
+        <e p="Contents.json" t="Include" />
+      </e>
+      <e p="bin" t="ExcludeRecursive" />
+      <e p="coinTicker.csproj" t="IncludeRecursive" />
+      <e p="coinTicker.sln" t="IncludeFlat" />
+      <e p="Entitlements.plist" t="Include" />
+      <e p="ExtensionMethods.cs" t="Include" />
+      <e p="Info.plist" t="Include" />
+      <e p="Main.cs" t="Include" />
+      <e p="Main.storyboard" t="Include" />
+      <e p="MainViewController.cs" t="Include" />
+      <e p="Models" t="Include">
+        <e p="Product.cs" t="Include" />
+        <e p="Settings.cs" t="Include" />
+        <e p="Ticker.cs" t="Include" />
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="packages.config" t="Include" />
+      <e p="Resources" t="Include" />
+      <e p="Services" t="Include">
+        <e p="Dataservice.cs" t="Include" />
+        <e p="FIleService.cs" t="Include" />
+        <e p="IDataservice.cs" t="Include" />
+        <e p="IFileService.cs" t="Include" />
+      </e>
+    </e>
+  </component>
+</project>

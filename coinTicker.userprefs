@@ -1,0 +1,17 @@
+﻿<Properties StartupConfiguration="{5A433087-FED2-475A-9ACE-C8F475522DF9}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Dataservice.cs">
+    <Files>
+      <File FileName="AppDelegate.cs" Line="12" Column="13" />
+      <File FileName="MainViewModel.cs" Line="35" Column="64" />
+      <File FileName="Dataservice.cs" Line="32" Column="1" />
+      <File FileName="IDataservice.cs" Line="6" Column="50" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.coinTicker PreferredExecutionTarget="Test1" />
+</Properties>
