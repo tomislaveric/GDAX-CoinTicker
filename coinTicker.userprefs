@@ -1,10 +1,13 @@
-﻿<Properties StartupConfiguration="{5A433087-FED2-475A-9ACE-C8F475522DF9}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Dataservice.cs">
+﻿<Properties StartupConfiguration="{5A433087-FED2-475A-9ACE-C8F475522DF9}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Feed/MessageType.cs">
     <Files>
-      <File FileName="AppDelegate.cs" Line="12" Column="13" />
-      <File FileName="MainViewModel.cs" Line="35" Column="64" />
-      <File FileName="Dataservice.cs" Line="32" Column="1" />
-      <File FileName="IDataservice.cs" Line="6" Column="50" />
+      <File FileName="MainViewController.cs" Line="39" Column="33" />
+      <File FileName="Services/ProductTickerFeed.cs" Line="109" Column="26" />
+      <File FileName="Services/IProductTickerFeed.cs" Line="10" Column="22" />
+      <File FileName="Models/Feed/Channel.cs" Line="1" Column="1" />
+      <File FileName="Models/Feed/ChannelType.cs" Line="8" Column="1" />
+      <File FileName="Models/Feed/Message.cs" Line="6" Column="21" />
+      <File FileName="Models/Feed/MessageType.cs" Line="6" Column="39" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
