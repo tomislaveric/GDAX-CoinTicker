@@ -51,6 +51,11 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.Mac" />
+    <Reference Include="websocket-sharp">
+      <HintPath>packages\WebSocketSharp.1.0.3-rc11\lib\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
@@ -68,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Models\Feed\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Info.plist" />
@@ -86,9 +92,16 @@
     <Compile Include="Services\FIleService.cs" />
     <Compile Include="Services\IDataservice.cs" />
     <Compile Include="Services\IFileService.cs" />
+    <Compile Include="Services\ProductTickerFeed.cs" />
+    <Compile Include="Services\IProductTickerFeed.cs" />
+    <Compile Include="Models\Feed\Channel.cs" />
+    <Compile Include="Models\Feed\Message.cs" />
+    <Compile Include="Models\Feed\MessageType.cs" />
+    <Compile Include="Models\Feed\ChannelType.cs" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Main.storyboard" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Mac\Xamarin.Mac.CSharp.targets" />
+  <Import Project="packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('packages\NETStandard.Library.2.0.1\build\netstandard2.0\NETStandard.Library.targets')" />
 </Project>

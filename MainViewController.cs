@@ -1,6 +1,4 @@
-﻿using System;
-using System.Timers;
-using AppKit;
+﻿using AppKit;
 using coinTicker.Models;
 using coinTicker.Services;
 
@@ -10,29 +8,30 @@ namespace coinTicker
     {
         private readonly IDataService _dataService = new DataService();
         private readonly IFileService _fileService = new FileService();
-        private readonly NSMenu mainMenu = new NSMenu();
+        private readonly IProductTickerFeed _productTickerFeed = new ProductTickerFeed();
+        private readonly NSMenu _mainMenu = new NSMenu();
 
-        private NSStatusItem statusItem { get; set; }
-        private Product defaultProduct { get; set; }
+        private NSStatusItem _statusItem;
+        private Product _defaultProduct;
 
         public MainViewController(NSStatusItem statusItem)
         {
-            this.statusItem = statusItem;
-            defaultProduct = _fileService.GetDefaultProduct();
+            _statusItem = statusItem;
+
 
             CreateMenu(statusItem);
             CreateTickerMenu();
 
-            StartTickerInterval(10000);
+            SetDefaultProduct(_fileService.GetDefaultProduct());
         }
 
-        private void CreateMenu(NSStatusItem _statusItem)
+        private void CreateMenu(NSStatusItem statusItem)
         {
-            statusItem = _statusItem;
+            _statusItem = statusItem;
             var quitItem = new NSMenuItem {Title = "Quit"};
             quitItem.Activated += (sender, e) => QuitApplication();
-            mainMenu.AddItem(quitItem);
-            statusItem.Menu = mainMenu;
+            _mainMenu.AddItem(quitItem);
+            _statusItem.Menu = _mainMenu;
         }
 
         private void CreateTickerMenu()
@@ -40,11 +39,11 @@ namespace coinTicker
            InvokeOnMainThread(async () =>
             {
                 var productsItem = new NSMenuItem {Title = "Ticker"};
-                mainMenu.AddItem(productsItem);
+                _mainMenu.AddItem(productsItem);
 
                 var allProducts = await _dataService.GetAllProducts();
                 var tickerSubmenu = new NSMenu();
-                statusItem.Menu.SetSubmenu(tickerSubmenu, productsItem);
+                _statusItem.Menu.SetSubmenu(tickerSubmenu, productsItem);
 
                 foreach (var product in allProducts)
                 {
@@ -54,9 +53,8 @@ namespace coinTicker
                     };
                     item.Activated += (sender, e) =>
                     {
-                        defaultProduct = product;
+                        SetDefaultProduct(product);
                         _fileService.SaveDefaultProduct(product);
-                        SetCurrentPrice(product);
                     };
 
                     tickerSubmenu.AddItem(item);
@@ -64,27 +62,29 @@ namespace coinTicker
             });
         }
 
-        private void StartTickerInterval(int milliSeconds)
-        {
-            SetCurrentPrice(defaultProduct);
-            var timer = new Timer(milliSeconds);
-            timer.Elapsed += (obj, e) => { SetCurrentPrice(defaultProduct); };
-            timer.Enabled = true;
-            GC.KeepAlive(timer);
-        }
-
         private void QuitApplication()
         {
+            _productTickerFeed.Disconnect();
             NSApplication.SharedApplication.Terminate(null);
         }
 
-        private void SetCurrentPrice(Product product)
+        private void SetCurrentPrice(double price)
         {
-            InvokeOnMainThread(async () =>
+            InvokeOnMainThread(() =>
             {
-                var fetchedProduct = await _dataService.GetTickerByProduct(defaultProduct);
-                statusItem.Button.Title = fetchedProduct.Price.ToCurrency(defaultProduct.TargetCurrency);
+                _statusItem.Button.Title = price.ToCurrency(_defaultProduct.TargetCurrency);
             });
+        }
+
+        private async void SetDefaultProduct(Product product)
+        {
+            _defaultProduct = product;
+
+            SetCurrentPrice((await _dataService.GetTickerByProduct(_defaultProduct)).Price);
+            _productTickerFeed.OnTickerReceived = (ticker) => SetCurrentPrice(ticker.Price);
+            _productTickerFeed.Connect();
+            _productTickerFeed.Unsubscribe();
+            _productTickerFeed.SubscribeTicker(_defaultProduct.Id);
         }
     }
 }
